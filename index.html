@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English A1: Verb "To Be" & Adjectives</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .shake {
+            animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+        .pop-in {
+            animation: popIn 0.3s ease-out forwards;
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans selection:bg-brand-500 selection:text-white">
+
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 sm:px-6 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    <i class="fa-solid font-bold">To</i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-slate-900 text-lg sm:text-xl leading-tight">Verb "To Be" & Adjectives</h1>
+                    <p class="text-xs text-slate-500 font-medium">Nivel A1 • Práctica de Afirmativo, Negativo y Preguntas (+ / - / ?)</p>
+                </div>
+            </div>
+
+            <!-- Global Progress Tracker -->
+            <div class="flex items-center gap-3 bg-slate-100 p-1.5 px-3 rounded-full text-xs font-semibold text-slate-700">
+                <div class="flex items-center gap-1 text-amber-500">
+                    <i class="fa-solid fa-fire text-sm"></i>
+                    <span id="streakCount">0</span>
+                </div>
+                <span class="text-slate-300">|</span>
+                <div class="flex items-center gap-1 text-emerald-600">
+                    <i class="fa-solid fa-circle-check text-sm"></i>
+                    <span id="completedCount">0</span>/30
+                </div>
+                <span class="text-slate-300">|</span>
+                <div class="flex items-center gap-1 text-brand-600">
+                    <i class="fa-solid fa-star text-sm"></i>
+                    <span id="scorePercentage">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex gap-2 border-t border-slate-100 pt-2 pb-1">
+            <button onclick="switchTab('vocab')" id="tabBtnVocab" class="flex-1 sm:flex-none px-4 py-2 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2 bg-brand-50 text-brand-700 border border-brand-200 shadow-sm">
+                <i class="fa-solid fa-book-open"></i> 1. Vocabulario y Reglas
+            </button>
+            <button onclick="switchTab('practice')" id="tabBtnPractice" class="flex-1 sm:flex-none px-4 py-2 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2 text-slate-600 hover:bg-slate-100">
+                <i class="fa-solid fa-dumbbell"></i> 2. Práctica (30 Ejercicios)
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6">
+
+        <section id="vocabTab" class="space-y-6">
+            
+            <!-- Quick Rules Callout for All 3 Forms -->
+            <div class="bg-gradient-to-r from-brand-500 via-indigo-500 to-purple-500 rounded-2xl p-0.5 shadow-md">
+                <div class="bg-white rounded-[15px] p-5 sm:p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-brand-100 text-brand-600 rounded-xl hidden sm:block">
+                            <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <div class="space-y-3 w-full">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-brand-100 text-brand-700 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Estructuras Clave A1</span>
+                                <h2 class="text-base sm:text-lg font-bold text-slate-900">¿Cómo usar el Verbo "To Be" con Adjetivos?</h2>
+                            </div>
+                            
+                            <!-- Cheat Sheet Table for +, -, ? -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                                <div class="bg-emerald-50 p-3.5 rounded-xl border border-emerald-200">
+                                    <div class="flex items-center gap-1.5 font-bold text-emerald-800 mb-1.5">
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                        <span>1. Afirmativo (+)</span>
+                                    </div>
+                                    <p class="text-slate-600 mb-1"><span class="font-bold text-emerald-700">Sujeto + Verb To Be</span></p>
+                                    <p class="text-slate-700 font-mono">She is tired.</p>
+                                    <p class="text-slate-700 font-mono">They are cold.</p>
+                                </div>
+                                <div class="bg-rose-50 p-3.5 rounded-xl border border-rose-200">
+                                    <div class="flex items-center gap-1.5 font-bold text-rose-800 mb-1.5">
+                                        <i class="fa-solid fa-circle-minus"></i>
+                                        <span>2. Negativo (-)</span>
+                                    </div>
+                                    <p class="text-slate-600 mb-1"><span class="font-bold text-rose-700">Sujeto + Verb + NOT</span></p>
+                                    <p class="text-slate-700 font-mono">She is not (isn't) tired.</p>
+                                    <p class="text-slate-700 font-mono">They are not (aren't) cold.</p>
+                                </div>
+                                <div class="bg-indigo-50 p-3.5 rounded-xl border border-indigo-200">
+                                    <div class="flex items-center gap-1.5 font-bold text-indigo-800 mb-1.5">
+                                        <i class="fa-solid fa-circle-question"></i>
+                                        <span>3. Pregunta (?)</span>
+                                    </div>
+                                    <p class="text-slate-600 mb-1"><span class="font-bold text-indigo-700">Verb To Be + Sujeto...?</span></p>
+                                    <p class="text-slate-700 font-mono">Is she tired?</p>
+                                    <p class="text-slate-700 font-mono">Are they cold?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vocabulary Cards Section -->
+            <div class="space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                        <h2 class="text-xl font-extrabold text-slate-900">Vocabulario Básico A1: Adjetivos</h2>
+                        <p class="text-xs text-slate-500">Haz clic en el icono de audio <i class="fa-solid fa-volume-high text-brand-500"></i> para escuchar la pronunciación.</p>
+                    </div>
+                    <!-- Category filter tags -->
+                    <div class="flex flex-wrap gap-1.5" id="vocabFilterContainer">
+                        <button onclick="filterVocab('all')" class="vocab-filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-brand-600 text-white shadow-sm">Todos</button>
+                        <button onclick="filterVocab('emotion')" class="vocab-filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-slate-200 text-slate-700 hover:bg-slate-300">Emociones</button>
+                        <button onclick="filterVocab('physical')" class="vocab-filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-slate-200 text-slate-700 hover:bg-slate-300">Estados Físicos</button>
+                        <button onclick="filterVocab('appearance')" class="vocab-filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-slate-200 text-slate-700 hover:bg-slate-300">Apariencia</button>
+                    </div>
+                </div>
+
+                <!-- Grid of Vocab Cards -->
+                <div id="vocabGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Dynamic rendering via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+
+        <section id="practiceTab" class="hidden space-y-6">
+            
+            <!-- Exercise Header Controls -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="w-full sm:w-auto flex items-center justify-between sm:justify-start gap-4">
+                    <span class="text-sm font-bold text-slate-800">
+                        Ejercicio <span id="currentExNumber" class="text-brand-600 font-extrabold text-base">1</span> / 30
+                    </span>
+                    <span id="exCategoryBadge" class="bg-red-100 text-red-700 text-xs font-bold px-2.5 py-1 rounded-full">
+                        <i class="fa-solid fa-minus-circle mr-1"></i> Forma Negativa
+                    </span>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full sm:w-64 bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                    <div id="progressBar" class="bg-gradient-to-r from-brand-500 to-indigo-600 h-full w-0 transition-all duration-300"></div>
+                </div>
+
+                <!-- Navigation buttons -->
+                <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                    <button onclick="prevExercise()" id="btnPrevEx" class="px-3 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 text-xs font-semibold disabled:opacity-40 disabled:hover:bg-transparent">
+                        <i class="fa-solid fa-chevron-left mr-1"></i> Anter.
+                    </button>
+                    <button onclick="nextExercise()" id="btnNextEx" class="px-3 py-1.5 rounded-lg bg-slate-900 text-white hover:bg-slate-800 text-xs font-semibold">
+                        Siguiente <i class="fa-solid fa-chevron-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Exercise Box -->
+            <div id="exerciseCard" class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm transition-all relative overflow-hidden">
+                <div id="exerciseContent" class="space-y-6">
+                    <!-- Dynamic exercise content loaded here -->
+                </div>
+
+                <!-- Feedback Callout -->
+                <div id="feedbackBox" class="hidden mt-6 p-4 rounded-2xl text-sm transition-all pop-in">
+                    <!-- Dynamic feedback content -->
+                </div>
+            </div>
+
+            <!-- Jump to exercise numbers -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Navegador Rápido de Ejercicios (30):</p>
+                <div id="exercisePills" class="flex flex-wrap gap-1.5">
+                    <!-- Dynamic 30 exercise pill buttons -->
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        const vocabularyData = [
+            // Emotions
+            { id: 'happy', english: 'Happy', spanish: 'Feliz', category: 'emotion', emoji: '😊', posEx: 'I am happy.', negEx: 'I am not sad.', qEx: 'Are you happy?' },
+            { id: 'sad', english: 'Sad', spanish: 'Triste', category: 'emotion', emoji: '😢', posEx: 'He is sad.', negEx: 'He is not happy.', qEx: 'Is he sad?' },
+            { id: 'angry', english: 'Angry', spanish: 'Enojado/a', category: 'emotion', emoji: '😠', posEx: 'She is angry.', negEx: 'She isn\'t angry.', qEx: 'Is she angry?' },
+            { id: 'tired', english: 'Tired', spanish: 'Cansado/a', category: 'emotion', emoji: '😫', posEx: 'They are tired.', negEx: 'They aren\'t tired.', qEx: 'Are they tired?' },
+            { id: 'excited', english: 'Excited', spanish: 'Entusiasmado/a', category: 'emotion', emoji: '🤩', posEx: 'We are excited.', negEx: 'We are not bored.', qEx: 'Are you excited?' },
+            { id: 'calm', english: 'Calm', spanish: 'Tranquilo/a', category: 'emotion', emoji: '😌', posEx: 'The baby is calm.', negEx: 'The baby isn\'t angry.', qEx: 'Is the baby calm?' },
+            
+            // Physical States
+            { id: 'hot', english: 'Hot', spanish: 'Caluroso / Con calor', category: 'physical', emoji: '🥵', posEx: 'I am hot today.', negEx: 'I am not cold.', qEx: 'Are you hot?' },
+            { id: 'cold', english: 'Cold', spanish: 'Con frío', category: 'physical', emoji: '🥶', posEx: 'It is cold.', negEx: 'It is not hot.', qEx: 'Is it cold?' },
+            { id: 'hungry', english: 'Hungry', spanish: 'Hambriento/a', category: 'physical', emoji: '🍔', posEx: 'You are hungry.', negEx: 'You aren\'t hungry.', qEx: 'Are you hungry?' },
+            { id: 'thirsty', english: 'Thirsty', spanish: 'Sediento/a', category: 'physical', emoji: '🥤', posEx: 'She is thirsty.', negEx: 'She is not thirsty.', qEx: 'Is she thirsty?' },
+            { id: 'sick', english: 'Sick', spanish: 'Enfermo/a', category: 'physical', emoji: '🤒', posEx: 'He is sick.', negEx: 'He isn\'t sick.', qEx: 'Is he sick?' },
+            { id: 'fine', english: 'Fine / Okay', spanish: 'Bien / Todo bien', category: 'physical', emoji: '👍', posEx: 'I am fine.', negEx: 'I am not sick.', qEx: 'Are you fine?' },
+            { id: 'sleepy', english: 'Sleepy', spanish: 'Con sueño', category: 'physical', emoji: '😴', posEx: 'The cat is sleepy.', negEx: 'The cat isn\'t sleepy.', qEx: 'Is the cat sleepy?' },
+
+            // Physical Appearance
+            { id: 'tall', english: 'Tall', spanish: 'Alto/a', category: 'appearance', emoji: '📏', posEx: 'My brother is tall.', negEx: 'He is not short.', qEx: 'Is your brother tall?' },
+            { id: 'short', english: 'Short', spanish: 'Bajo/a (Estatura)', category: 'appearance', emoji: '📐', posEx: 'She is short.', negEx: 'She isn\'t tall.', qEx: 'Is she short?' },
+            { id: 'young', english: 'Young', spanish: 'Joven', category: 'appearance', emoji: '👦', posEx: 'They are young.', negEx: 'They aren\'t old.', qEx: 'Are they young?' },
+            { id: 'old', english: 'Old', spanish: 'Viejo/a / Mayor', category: 'appearance', emoji: '👴', posEx: 'The dog is old.', negEx: 'The dog is not young.', qEx: 'Is the dog old?' },
+            { id: 'big', english: 'Big', spanish: 'Grande', category: 'appearance', emoji: '🐘', posEx: 'The house is big.', negEx: 'It is not small.', qEx: 'Is the house big?' },
+            { id: 'small', english: 'Small', spanish: 'Pequeño/a', category: 'appearance', emoji: '🐭', posEx: 'The car is small.', negEx: 'It isn\'t big.', qEx: 'Is the car small?' }
+        ];
+
+        const exercisesData = [
+            // Ex 1 - Affirmative
+            {
+                type: 'fill_in',
+                category: 'affirmative',
+                instruction: 'Completa con la forma AFIRMATIVA del verbo "To Be" (am / is / are):',
+                sentenceBefore: 'I',
+                sentenceAfter: 'happy today!',
+                correctAnswers: ['am', "'m"],
+                explanation: 'Con el sujeto "I" en afirmativo utilizamos "am" (o la contracción "\'m").'
+            },
+            // Ex 2 - Negative
+            {
+                type: 'choice',
+                category: 'negative',
+                instruction: 'Selecciona la opción correcta en NEGATIVO:',
+                question: 'She _____ tired after work.',
+                options: ['is not', 'are not', 'am not', 'no is'],
+                correctIndex: 0,
+                explanation: 'Con "She" se utiliza "is not" (o la contracción "isn\'t"). Recuerda: ¡nunca se dice "no is"!'
+            },
+            // Ex 3 - Question Unscramble
+            {
+                type: 'unscramble',
+                category: 'question',
+                instruction: 'Ordena las palabras para formar la PREGUNTA correcta:',
+                words: ['Are', 'you', 'hungry', '?'],
+                correctOrder: ['Are', 'you', 'hungry', '?'],
+                explanation: 'Para formar preguntas con el verbo To Be, invertimos el orden: Verbo (Are) + Sujeto (you) + Adjetivo (hungry)?'
+            },
+            // Ex 4 - Affirmative Fill In
+            {
+                type: 'fill_in',
+                category: 'affirmative',
+                instruction: 'Completa la oración afirmativa (am / is / are):',
+                sentenceBefore: 'They',
+                sentenceAfter: 'excited about the trip.',
+                correctAnswers: ['are', "'re"],
+                explanation: 'Para el sujeto plural "They", la forma afirmativa es "are".'
+            },
+            // Ex 5 - Question Choice
+            {
+                type: 'choice',
+                category: 'question',
+                instruction: 'Selecciona la palabra correcta para iniciar la pregunta:',
+                question: '_____ she tired today?',
+                options: ['Is', 'Are', 'Am', 'Does'],
+                correctIndex: 0,
+                explanation: 'Como el sujeto es "She", la pregunta comienza con "Is".'
+            },
+            // Ex 6 - Negative Transform
+            {
+                type: 'transform',
+                category: 'negative',
+                instruction: 'Transforma esta oración afirmativa a su forma NEGATIVA:',
+                promptSentence: 'He is cold.',
+                correctAnswers: ['He is not cold.', 'He isn\'t cold.', 'He is not cold', 'He isn\'t cold'],
+                explanation: 'Añadimos "not" después de "is": "He is not cold." o "He isn\'t cold."'
+            },
+            // Ex 7 - Question Fill In
+            {
+                type: 'fill_in',
+                category: 'question',
+                instruction: 'Completa la pregunta con el verbo "To Be" correspondiente:',
+                sentenceBefore: '',
+                sentenceAfter: 'you ready for class?',
+                correctAnswers: ['Are', 'are'],
+                explanation: 'Las preguntas para el sujeto "you" comienzan con "Are".'
+            },
+            // Ex 8 - Affirmative Choice
+            {
+                type: 'choice',
+                category: 'affirmative',
+                instruction: 'Selecciona la forma afirmativa correcta:',
+                question: 'The cat _____ very sleepy.',
+                options: ['is', 'are', 'am', 'be'],
+                correctIndex: 0,
+                explanation: '"The cat" equivale al pronombre "It", por lo que usamos "is".'
+            },
+            // Ex 9 - Error Fix Negative
+            {
+                type: 'error_fix',
+                category: 'error',
+                instruction: 'Corrige el error típico de este estudiante A1:',
+                wrongSentence: 'I no am tall.',
+                correctAnswers: ['I am not tall.', 'I\'m not tall.', 'I am not tall', 'I\'m not tall'],
+                explanation: 'En inglés el "not" se coloca DESPUÉS del verbo To Be: "I am not tall."'
+            },
+            // Ex 10 - Question Short Answer Choice
+            {
+                type: 'choice',
+                category: 'question',
+                instruction: 'Elige la respuesta corta negativa correcta:',
+                question: 'Is he angry? - No, he _____.',
+                options: ["isn't", "aren't", "am not", "is"],
+                correctIndex: 0,
+                explanation: 'La respuesta corta negativa para "he" es "No, he isn\'t" (o "is not").'
+            },
+            // Ex 11 - Affirmative Unscramble
+            {
+                type: 'unscramble',
+                category: 'affirmative',
+                instruction: 'Ordena la oración afirmativa:',
+                words: ['We', 'are', 'very', 'calm', '.'],
+                correctOrder: ['We', 'are', 'very', 'calm', '.'],
+                explanation: 'Sujeto (We) + Verbo (are) + Adverbio/Adjetivo (very calm).'
+            },
+            // Ex 12 - Negative Fill In
+            {
+                type: 'fill_in',
+                category: 'negative',
+                instruction: 'Completa la oración negativa con contracción (isn\'t / aren\'t / \'m not):',
+                sentenceBefore: 'My brothers',
+                sentenceAfter: 'short.',
+                correctAnswers: ["aren't", "are not"],
+                explanation: '"My brothers" es plural (They), por lo que la forma negativa contraída es "aren\'t".'
+            },
+            // Ex 13 - Question Fill In
+            {
+                type: 'fill_in',
+                category: 'question',
+                instruction: 'Completa el inicio de la pregunta:',
+                sentenceBefore: '',
+                sentenceAfter: 'the dog hungry?',
+                correctAnswers: ['Is', 'is'],
+                explanation: '"The dog" es singular (It), por lo que la pregunta comienza con "Is".'
+            },
+            // Ex 14 - Question Transform
+            {
+                type: 'transform',
+                category: 'question',
+                instruction: 'Transforma esta oración afirmativa en una PREGUNTA:',
+                promptSentence: 'She is tired.',
+                correctAnswers: ['Is she tired?', 'Is she tired'],
+                explanation: 'Invertimos el orden del verbo y el sujeto: "Is she tired?"'
+            },
+            // Ex 15 - Error Fix Question
+            {
+                type: 'error_fix',
+                category: 'error',
+                instruction: 'Corrige el error en el orden de las palabras de esta pregunta:',
+                wrongSentence: 'You are happy?',
+                correctAnswers: ['Are you happy?', 'Are you happy'],
+                explanation: 'En inglés no basta con poner el signo de interrogación; hay que invertir el verbo: "Are you happy?"'
+            },
+            // Ex 16 - Negative Choice
+            {
+                type: 'choice',
+                category: 'negative',
+                instruction: 'Completa la oración negativa:',
+                question: 'I _____ old, I am only 20 years old!',
+                options: ["am not", "is not", "are not", "not am"],
+                correctIndex: 0,
+                explanation: 'Para la primera persona "I", la forma negativa es "am not".'
+            },
+            // Ex 17 - Question Unscramble
+            {
+                type: 'unscramble',
+                category: 'question',
+                instruction: 'Ordena las palabras para formar la pregunta:',
+                words: ['Is', 'the', 'coffee', 'hot', '?'],
+                correctOrder: ['Is', 'the', 'coffee', 'hot', '?'],
+                explanation: 'Estructura interrogativa: Is + the coffee + hot?'
+            },
+            // Ex 18 - Affirmative Fill In
+            {
+                type: 'fill_in',
+                category: 'affirmative',
+                instruction: 'Completa en afirmativo (am / is / are):',
+                sentenceBefore: 'Carlos and Maria',
+                sentenceAfter: 'tall.',
+                correctAnswers: ['are', "'re"],
+                explanation: '"Carlos and Maria" son dos personas (They), por lo tanto corresponde "are".'
+            },
+            // Ex 19 - Negative Unscramble
+            {
+                type: 'unscramble',
+                category: 'negative',
+                instruction: 'Ordena la oración negativa:',
+                words: ['We', 'are', 'not', 'angry', '.'],
+                correctOrder: ['We', 'are', 'not', 'angry', '.'],
+                explanation: 'We + are + not + angry.'
+            },
+            // Ex 20 - Question Choice
+            {
+                type: 'choice',
+                category: 'question',
+                instruction: 'Selecciona la opción correcta:',
+                question: '_____ they thirsty?',
+                options: ['Are', 'Is', 'Am', 'Be'],
+                correctIndex: 0,
+                explanation: 'Con el sujeto "they", usamos "Are" al inicio de la pregunta.'
+            },
+            // Ex 21 - Error Fix Agreement
+            {
+                type: 'error_fix',
+                category: 'error',
+                instruction: 'Corrige la falta de concordancia entre el sujeto y el verbo:',
+                wrongSentence: 'She am happy.',
+                correctAnswers: ['She is happy.', 'She\'s happy.', 'She is happy', 'She\'s happy'],
+                explanation: 'El verbo "am" es exclusivo de "I". Para "She" debemos usar "is".'
+            },
+            // Ex 22 - Negative Transform
+            {
+                type: 'transform',
+                category: 'negative',
+                instruction: 'Convierte a oración NEGATIVA:',
+                promptSentence: 'They are excited.',
+                correctAnswers: ['They are not excited.', 'They aren\'t excited.', 'They are not excited', 'They aren\'t excited'],
+                explanation: 'Se agrega "not" después de "are": "They are not excited" o "They aren\'t excited".'
+            },
+            // Ex 23 - Question Fill In
+            {
+                type: 'fill_in',
+                category: 'question',
+                instruction: 'Completa la pregunta:',
+                sentenceBefore: '',
+                sentenceAfter: 'I late for class?',
+                correctAnswers: ['Am', 'am'],
+                explanation: 'Para hacer una pregunta sobre uno mismo ("I"), iniciamos con "Am".'
+            },
+            // Ex 24 - Contrast Choice
+            {
+                type: 'choice',
+                category: 'contrast',
+                instruction: 'Elige la opción que combina la idea afirmativa con la negativa:',
+                question: 'Juan is happy. He _____ sad.',
+                options: ["isn't", "aren't", "am not", "is"],
+                correctIndex: 0,
+                explanation: 'Si Juan está feliz, él NO está triste -> "He isn\'t sad."'
+            },
+            // Ex 25 - Question Transform
+            {
+                type: 'transform',
+                category: 'question',
+                instruction: 'Transforma esta oración en PREGUNTA:',
+                promptSentence: 'You are cold.',
+                correctAnswers: ['Are you cold?', 'Are you cold'],
+                explanation: 'Cambiamos de "You are cold" a "Are you cold?"'
+            },
+            // Ex 26 - Affirmative Choice
+            {
+                type: 'choice',
+                category: 'affirmative',
+                instruction: 'Elige el verbo correcto para esta descripción:',
+                question: 'The weather _____ hot today.',
+                options: ['is', 'are', 'am', 'be'],
+                correctIndex: 0,
+                explanation: '"The weather" (el clima) es una cosa singular (It) -> "is".'
+            },
+            // Ex 27 - Negative Fill In
+            {
+                type: 'fill_in',
+                category: 'negative',
+                instruction: 'Completa la oración negativa:',
+                sentenceBefore: 'The students',
+                sentenceAfter: 'sleepy in class.',
+                correctAnswers: ["aren't", "are not"],
+                explanation: '"The students" (Ellos/They) se combina con "aren\'t" o "are not".'
+            },
+            // Ex 28 - Question Unscramble
+            {
+                type: 'unscramble',
+                category: 'question',
+                instruction: 'Ordena la pregunta:',
+                words: ['Are', 'they', 'young', '?'],
+                correctOrder: ['Are', 'they', 'young', '?'],
+                explanation: 'Are + they + young?'
+            },
+            // Ex 29 - Error Fix Question Double Verb
+            {
+                type: 'error_fix',
+                category: 'error',
+                instruction: 'Corrige el error de duplicación en esta pregunta:',
+                wrongSentence: 'Is she is tired?',
+                correctAnswers: ['Is she tired?', 'Is she tired'],
+                explanation: 'Solo necesitamos un verbo "Is" al comienzo de la pregunta: "Is she tired?"'
+            },
+            // Ex 30 - Question Short Answer
+            {
+                type: 'fill_in',
+                category: 'question',
+                instruction: '¡Último ejercicio! Responde con la forma AFIRMATIVA corta:',
+                sentenceBefore: 'Are you ready? - Yes, I',
+                sentenceAfter: '!',
+                correctAnswers: ['am', "'m"],
+                explanation: '¡Excelente! La respuesta corta afirmativa para "I" es "Yes, I am!"'
+            }
+        ];
+
+        let currentExerciseIndex = 0;
+        let currentStreak = 0;
+        let exerciseStatus = new Array(exercisesData.length).fill(null);
+        let userAnswers = new Array(exercisesData.length).fill(null);
+
+        function switchTab(tab) {
+            const vocabTab = document.getElementById('vocabTab');
+            const practiceTab = document.getElementById('practiceTab');
+            const tabBtnVocab = document.getElementById('tabBtnVocab');
+            const tabBtnPractice = document.getElementById('tabBtnPractice');
+
+            if (tab === 'vocab') {
+                vocabTab.classList.remove('hidden');
+                practiceTab.classList.add('hidden');
+                tabBtnVocab.className = "flex-1 sm:flex-none px-4 py-2 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2 bg-brand-50 text-brand-700 border border-brand-200 shadow-sm";
+                tabBtnPractice.className = "flex-1 sm:flex-none px-4 py-2 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2 text-slate-600 hover:bg-slate-100";
+            } else {
+                vocabTab.classList.add('hidden');
+                practiceTab.classList.remove('hidden');
+                tabBtnPractice.className = "flex-1 sm:flex-none px-4 py-2 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2 bg-brand-50 text-brand-700 border border-brand-200 shadow-sm";
+                tabBtnVocab.className = "flex-1 sm:flex-none px-4 py-2 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2 text-slate-600 hover:bg-slate-100";
+                renderExercise();
+            }
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function renderVocabulary(filter = 'all') {
+            const vocabGrid = document.getElementById('vocabGrid');
+            vocabGrid.innerHTML = '';
+
+            const filtered = filter === 'all' 
+                ? vocabularyData 
+                : vocabularyData.filter(v => v.category === filter);
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-3';
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-3xl">${item.emoji}</span>
+                            <button onclick="speakText('${item.english}')" class="w-8 h-8 rounded-full bg-brand-50 text-brand-600 hover:bg-brand-100 flex items-center justify-center transition-colors" title="Escuchar pronunciación">
+                                <i class="fa-solid fa-volume-high text-xs"></i>
+                            </button>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">${item.english}</h3>
+                        <p class="text-xs font-semibold text-slate-500">${item.spanish}</p>
+                    </div>
+
+                    <div class="space-y-1.5 pt-2 border-t border-slate-100 text-xs">
+                        <div class="flex items-start gap-1.5 text-slate-700">
+                            <i class="fa-solid fa-plus text-emerald-500 mt-0.5"></i>
+                            <span>${item.posEx}</span>
+                        </div>
+                        <div class="flex items-start gap-1.5 text-slate-700 font-medium">
+                            <i class="fa-solid fa-minus text-rose-500 mt-0.5"></i>
+                            <span class="text-rose-900 bg-rose-50 px-1 rounded">${item.negEx}</span>
+                        </div>
+                        <div class="flex items-start gap-1.5 text-slate-700 font-medium">
+                            <i class="fa-solid fa-question text-indigo-500 mt-0.5"></i>
+                            <span class="text-indigo-900 bg-indigo-50 px-1 rounded">${item.qEx}</span>
+                        </div>
+                    </div>
+                `;
+                vocabGrid.appendChild(card);
+            });
+        }
+
+        function filterVocab(category) {
+            document.querySelectorAll('.vocab-filter-btn').forEach(btn => {
+                btn.className = 'vocab-filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-slate-200 text-slate-700 hover:bg-slate-300';
+            });
+            event.target.className = 'vocab-filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-brand-600 text-white shadow-sm';
+            renderVocabulary(category);
+        }
+
+        function renderExercisePills() {
+            const pillsContainer = document.getElementById('exercisePills');
+            pillsContainer.innerHTML = '';
+
+            exercisesData.forEach((_, idx) => {
+                const btn = document.createElement('button');
+                btn.onclick = () => goToExercise(idx);
+                
+                let statusClasses = 'bg-slate-100 text-slate-600 hover:bg-slate-200 border-slate-200';
+                if (exerciseStatus[idx] === 'correct') {
+                    statusClasses = 'bg-emerald-500 text-white border-emerald-600 font-bold';
+                } else if (exerciseStatus[idx] === 'incorrect') {
+                    statusClasses = 'bg-rose-500 text-white border-rose-600 font-bold';
+                }
+
+                if (idx === currentExerciseIndex) {
+                    statusClasses += ' ring-2 ring-brand-500 ring-offset-1';
+                }
+
+                btn.className = `w-8 h-8 rounded-lg border text-xs font-semibold flex items-center justify-center transition-all ${statusClasses}`;
+                btn.innerText = idx + 1;
+                pillsContainer.appendChild(btn);
+            });
+        }
+
+        function renderExercise() {
+            const ex = exercisesData[currentExerciseIndex];
+            const content = document.getElementById('exerciseContent');
+            const feedbackBox = document.getElementById('feedbackBox');
+            
+            // Update Headers & Progress
+            document.getElementById('currentExNumber').innerText = currentExerciseIndex + 1;
+            document.getElementById('btnPrevEx').disabled = currentExerciseIndex === 0;
+            document.getElementById('btnNextEx').disabled = currentExerciseIndex === exercisesData.length - 1;
+            
+            // Update Category Badge Dynamically
+            const badge = document.getElementById('exCategoryBadge');
+            if (ex.category === 'affirmative') {
+                badge.className = 'bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full';
+                badge.innerHTML = '<i class="fa-solid fa-circle-plus mr-1"></i> Forma Afirmativa (+)';
+            } else if (ex.category === 'question') {
+                badge.className = 'bg-indigo-100 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full';
+                badge.innerHTML = '<i class="fa-solid fa-circle-question mr-1"></i> Forma Interrogativa (?)';
+            } else if (ex.category === 'error') {
+                badge.className = 'bg-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full';
+                badge.innerHTML = '<i class="fa-solid fa-bug mr-1"></i> Corrección de Error';
+            } else {
+                badge.className = 'bg-rose-100 text-rose-700 text-xs font-bold px-2.5 py-1 rounded-full';
+                badge.innerHTML = '<i class="fa-solid fa-circle-minus mr-1"></i> Forma Negativa (-)';
+            }
+
+            const progressPercent = ((currentExerciseIndex + 1) / exercisesData.length) * 100;
+            document.getElementById('progressBar').style.width = `${progressPercent}%`;
+
+            feedbackBox.classList.add('hidden');
+            feedbackBox.className = 'hidden mt-6 p-4 rounded-2xl text-sm transition-all pop-in';
+
+            let html = `
+                <div class="space-y-2">
+                    <p class="text-xs font-bold text-brand-600 uppercase tracking-wider">${getCategoryTitle(ex.category)}</p>
+                    <h3 class="text-lg font-bold text-slate-900">${ex.instruction}</h3>
+                </div>
+            `;
+
+            // Build input UI depending on exercise type
+            if (ex.type === 'fill_in') {
+                html += `
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-wrap items-center gap-3 text-lg font-semibold text-slate-800">
+                        <span>${ex.sentenceBefore}</span>
+                        <input type="text" id="userInput" placeholder="escribe aquí..." class="px-3 py-2 border-2 border-brand-200 focus:border-brand-600 focus:outline-none rounded-xl text-brand-700 bg-white shadow-inner font-mono text-base w-40 sm:w-48 text-center" autocomplete="off" />
+                        <span>${ex.sentenceAfter}</span>
+                    </div>
+                `;
+            } else if (ex.type === 'choice') {
+                html += `
+                    ${ex.question ? `<p class="text-lg font-semibold text-slate-800 bg-slate-50 p-4 rounded-2xl border border-slate-200">${ex.question}</p>` : ''}
+                    <div class="grid grid-cols-1 gap-3">
+                        ${ex.options.map((opt, i) => `
+                            <button onclick="selectOption(${i})" class="choice-btn p-4 rounded-2xl border-2 border-slate-200 hover:border-brand-500 hover:bg-brand-50/50 text-left font-semibold text-slate-700 flex items-center justify-between transition-all">
+                                <span>${opt}</span>
+                                <i class="fa-regular fa-circle text-slate-400 text-lg"></i>
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+            } else if (ex.type === 'unscramble') {
+                // Word Bank for Unscramble
+                const shuffled = [...ex.words].sort(() => 0.5 - Math.random());
+                html += `
+                    <div class="space-y-4">
+                        <div id="wordAnswerArea" class="min-h-[60px] bg-slate-50 border-2 border-dashed border-slate-300 p-3 rounded-2xl flex flex-wrap gap-2 items-center">
+                            <!-- Selected words will go here -->
+                        </div>
+                        <p class="text-xs text-slate-500 font-medium">Haz clic en las palabras para ordenarlas:</p>
+                        <div id="wordBank" class="flex flex-wrap gap-2">
+                            ${shuffled.map((word, i) => `
+                                <button onclick="clickWordPill(this, '${word}')" class="word-pill bg-white border-2 border-slate-200 hover:border-brand-500 shadow-sm px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-700 transition-all">
+                                    ${word}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else if (ex.type === 'transform') {
+                html += `
+                    <div class="space-y-3">
+                        <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl text-indigo-900 font-bold text-base flex items-center gap-2">
+                            <i class="fa-solid fa-arrows-rotate text-brand-500"></i> Oración Afirmativa: <span class="underline">${ex.promptSentence}</span>
+                        </div>
+                        <input type="text" id="userInput" placeholder="Escribe la versión negativa aquí..." class="w-full p-4 border-2 border-slate-200 focus:border-brand-600 focus:outline-none rounded-2xl text-base font-medium text-slate-800 shadow-inner" autocomplete="off" />
+                    </div>
+                `;
+            } else if (ex.type === 'error_fix') {
+                html += `
+                    <div class="space-y-3">
+                        <div class="bg-rose-50 border border-rose-200 p-4 rounded-2xl text-rose-900 font-bold text-base flex items-center gap-2 flex-wrap">
+                            <i class="fa-solid fa-bug text-rose-500"></i> Oración con Error: <span class="font-mono bg-white px-3 py-1 rounded-xl border border-rose-200 text-rose-800 shadow-sm">${ex.wrongSentence}</span>
+                        </div>
+                        <input type="text" id="userInput" placeholder="Escribe la oración corregida..." class="w-full p-4 border-2 border-slate-200 focus:border-brand-600 focus:outline-none rounded-2xl text-base font-medium text-slate-800 shadow-inner" autocomplete="off" />
+                    </div>
+                `;
+            }
+
+            // Add Check Button for non-choice types
+            if (ex.type !== 'choice') {
+                html += `
+                    <div class="pt-2 flex justify-end">
+                        <button onclick="checkAnswer()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3 rounded-2xl shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-check"></i> Comprobar Respuesta
+                        </button>
+                    </div>
+                `;
+            }
+
+            content.innerHTML = html;
+            renderExercisePills();
+
+            // Handle press enter to submit text inputs
+            const userInput = document.getElementById('userInput');
+            if (userInput) {
+                userInput.focus();
+                userInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') checkAnswer();
+                });
+            }
+
+            // Restore user state if already solved
+            if (exerciseStatus[currentExerciseIndex] !== null) {
+                showPreviousResult();
+            }
+        }
+
+        let unscrambledWords = [];
+        function clickWordPill(btn, word) {
+            const answerArea = document.getElementById('wordAnswerArea');
+            if (btn.classList.contains('used')) {
+                // Return to bank
+                btn.classList.remove('used', 'opacity-30', 'pointer-events-none');
+                const wordIndex = unscrambledWords.indexOf(word);
+                if (wordIndex > -1) unscrambledWords.splice(wordIndex, 1);
+            } else {
+                // Move to answer area
+                btn.classList.add('used', 'opacity-30', 'pointer-events-none');
+                unscrambledWords.push(word);
+            }
+
+            // Re-render answer area
+            answerArea.innerHTML = unscrambledWords.map((w, idx) => `
+                <span onclick="removeWordFromAnswer(${idx}, '${w}')" class="bg-brand-600 text-white font-semibold text-sm px-3 py-1.5 rounded-xl cursor-pointer hover:bg-rose-600 transition-colors shadow-sm inline-flex items-center gap-1">
+                    ${w} <i class="fa-solid fa-xmark text-xs opacity-70"></i>
+                </span>
+            `).join('');
+        }
+
+        function removeWordFromAnswer(index, word) {
+            unscrambledWords.splice(index, 1);
+            // Re-enable pill in bank
+            const pills = document.querySelectorAll('#wordBank .word-pill');
+            for (let pill of pills) {
+                if (pill.innerText.trim() === word && pill.classList.contains('used')) {
+                    pill.classList.remove('used', 'opacity-30', 'pointer-events-none');
+                    break;
+                }
+            }
+            // Refresh answer area
+            const answerArea = document.getElementById('wordAnswerArea');
+            answerArea.innerHTML = unscrambledWords.map((w, idx) => `
+                <span onclick="removeWordFromAnswer(${idx}, '${w}')" class="bg-brand-600 text-white font-semibold text-sm px-3 py-1.5 rounded-xl cursor-pointer hover:bg-rose-600 transition-colors shadow-sm inline-flex items-center gap-1">
+                    ${w} <i class="fa-solid fa-xmark text-xs opacity-70"></i>
+                </span>
+            `).join('');
+        }
+
+        function selectOption(selectedIndex) {
+            const ex = exercisesData[currentExerciseIndex];
+            const isCorrect = selectedIndex === ex.correctIndex;
+            
+            // Visual highlight buttons
+            const choiceBtns = document.querySelectorAll('.choice-btn');
+            choiceBtns.forEach((btn, i) => {
+                if (i === selectedIndex) {
+                    if (isCorrect) {
+                        btn.className = 'choice-btn p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50 font-bold text-emerald-900 flex items-center justify-between';
+                        btn.querySelector('i').className = 'fa-solid fa-circle-check text-emerald-600 text-xl';
+                    } else {
+                        btn.className = 'choice-btn p-4 rounded-2xl border-2 border-rose-500 bg-rose-50 font-bold text-rose-900 flex items-center justify-between';
+                        btn.querySelector('i').className = 'fa-solid fa-circle-xmark text-rose-600 text-xl';
+                    }
+                } else if (i === ex.correctIndex && !isCorrect) {
+                    btn.className = 'choice-btn p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50 text-emerald-900 flex items-center justify-between';
+                    btn.querySelector('i').className = 'fa-solid fa-circle-check text-emerald-600 text-xl';
+                }
+            });
+
+            processEvaluation(isCorrect, ex.options[selectedIndex]);
+        }
+
+        function checkAnswer() {
+            const ex = exercisesData[currentExerciseIndex];
+            let isCorrect = false;
+            let userProvidedText = '';
+
+            if (ex.type === 'fill_in' || ex.type === 'transform' || ex.type === 'error_fix') {
+                const input = document.getElementById('userInput');
+                if (!input || !input.value.trim()) return;
+                
+                userProvidedText = input.value.trim();
+                const normalized = normalizeText(userProvidedText);
+                
+                isCorrect = ex.correctAnswers.some(ans => normalizeText(ans) === normalized);
+            } else if (ex.type === 'unscramble') {
+                userProvidedText = unscrambledWords.join(' ');
+                const normalizedUser = normalizeText(userProvidedText);
+                const normalizedCorrect = normalizeText(ex.correctOrder.join(' '));
+                isCorrect = normalizedUser === normalizedCorrect;
+            }
+
+            processEvaluation(isCorrect, userProvidedText);
+        }
+
+        /* Helper string normalizer */
+        function normalizeText(str) {
+            return str
+                .toLowerCase()
+                .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
+                .replace(/\s+/g, " ")
+                .trim();
+        }
+
+        function processEvaluation(isCorrect, userText) {
+            const ex = exercisesData[currentExerciseIndex];
+            const feedbackBox = document.getElementById('feedbackBox');
+            const card = document.getElementById('exerciseCard');
+
+            exerciseStatus[currentExerciseIndex] = isCorrect ? 'correct' : 'incorrect';
+            userAnswers[currentExerciseIndex] = userText;
+
+            if (isCorrect) {
+                currentStreak++;
+                feedbackBox.className = 'mt-6 p-4 rounded-2xl text-sm bg-emerald-50 border border-emerald-200 text-emerald-900 block pop-in';
+                feedbackBox.innerHTML = `
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-2xl mt-0.5"></i>
+                        <div class="space-y-1">
+                            <p class="font-bold text-base">¡Excelente trabajo! 🎉</p>
+                            <p class="text-xs text-emerald-700">${ex.explanation}</p>
+                            <button onclick="speakCorrectSentence()" class="mt-2 text-xs font-bold text-emerald-800 bg-emerald-100 hover:bg-emerald-200 px-3 py-1.5 rounded-xl transition-colors inline-flex items-center gap-1.5">
+                                <i class="fa-solid fa-volume-high"></i> Escuchar Oración Correcta
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                // Confetti burst for key milestones or correct answers
+                if (currentStreak % 5 === 0) {
+                    confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
+                }
+            } else {
+                currentStreak = 0;
+                card.classList.add('shake');
+                setTimeout(() => card.classList.remove('shake'), 400);
+
+                let correctHint = '';
+                if (ex.correctAnswers) correctHint = ex.correctAnswers[0];
+                else if (ex.correctOrder) correctHint = ex.correctOrder.join(' ');
+                else if (ex.options) correctHint = ex.options[ex.correctIndex];
+
+                feedbackBox.className = 'mt-6 p-4 rounded-2xl text-sm bg-rose-50 border border-rose-200 text-rose-900 block pop-in';
+                feedbackBox.innerHTML = `
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-circle-xmark text-rose-600 text-2xl mt-0.5"></i>
+                        <div class="space-y-1">
+                            <p class="font-bold text-base">Casi lo logras. ¡Revisemos!</p>
+                            <p class="text-xs font-semibold text-slate-700">Respuesta Correcta: <span class="font-mono text-rose-800 bg-white px-2 py-0.5 rounded border border-rose-200">${correctHint}</span></p>
+                            <p class="text-xs text-rose-700 leading-relaxed pt-1">${ex.explanation}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            updateGlobalStats();
+            renderExercisePills();
+        }
+
+        function speakCorrectSentence() {
+            const ex = exercisesData[currentExerciseIndex];
+            let textToSpeak = '';
+            if (ex.type === 'fill_in') {
+                textToSpeak = `${ex.sentenceBefore} ${ex.correctAnswers[0]} ${ex.sentenceAfter}`;
+            } else if (ex.correctAnswers) {
+                textToSpeak = ex.correctAnswers[0];
+            } else if (ex.correctOrder) {
+                textToSpeak = ex.correctOrder.join(' ');
+            } else if (ex.options) {
+                textToSpeak = ex.options[ex.correctIndex];
+            }
+            speakText(textToSpeak);
+        }
+
+        function showPreviousResult() {
+            const ex = exercisesData[currentExerciseIndex];
+            const isCorrect = exerciseStatus[currentExerciseIndex] === 'correct';
+            processEvaluation(isCorrect, userAnswers[currentExerciseIndex]);
+        }
+
+        function nextExercise() {
+            if (currentExerciseIndex < exercisesData.length - 1) {
+                currentExerciseIndex++;
+                unscrambledWords = [];
+                renderExercise();
+            }
+        }
+
+        function prevExercise() {
+            if (currentExerciseIndex > 0) {
+                currentExerciseIndex--;
+                unscrambledWords = [];
+                renderExercise();
+            }
+        }
+
+        function goToExercise(idx) {
+            currentExerciseIndex = idx;
+            unscrambledWords = [];
+            renderExercise();
+        }
+
+        function getCategoryTitle(cat) {
+            switch(cat) {
+                case 'affirmative': return 'Práctica: Forma Afirmativa (+)';
+                case 'negative': return 'Práctica: Forma Negativa (-)';
+                case 'question': return 'Práctica: Forma Interrogativa (?)';
+                case 'error': return 'Corrección de Errores Típicos';
+                case 'contrast': return 'Afirmativo vs Negativo vs Interrogativo';
+                default: return 'Ejercicios To Be';
+            }
+        }
+
+        function updateGlobalStats() {
+            const completed = exerciseStatus.filter(s => s !== null).length;
+            const correctCount = exerciseStatus.filter(s => s === 'correct').length;
+            const accuracy = completed > 0 ? Math.round((correctCount / completed) * 100) : 0;
+
+            document.getElementById('completedCount').innerText = completed;
+            document.getElementById('streakCount').innerText = currentStreak;
+            document.getElementById('scorePercentage').innerText = `${accuracy}%`;
+        }
+
+        window.onload = function() {
+            renderVocabulary();
+            renderExercisePills();
+            renderExercise();
+        };
+    </script>
+</body>
+</html>
